@@ -5,8 +5,12 @@ import { MemoView } from "./components/MemoView";
 function App() {
   return (
     <div className="App">
-      <MemoView />
-      <MemoEdit />
+      <div className="memo-view">
+        <MemoView />
+      </div>
+      <div className="memo-edit">
+        <MemoEdit />
+      </div>
     </div>
   );
 }

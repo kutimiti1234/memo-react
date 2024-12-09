@@ -4,8 +4,13 @@ import { ViewSection } from "./ViewSection";
 export function MemoView() {
   return (
     <>
-      <MemoList />
-      <ViewSection />
+      <label>一覧</label>
+      <div className={"memo-list"}>
+        <MemoList />
+      </div>
+      <div className={"memo-view-section"}>
+        <ViewSection />
+      </div>
     </>
   );
 }
