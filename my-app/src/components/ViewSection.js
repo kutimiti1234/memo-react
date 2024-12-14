@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-export function EditSection({ memo }) {
+export function ViewSection({ memo }) {
   return <p className="memo-content">{memo.content}</p>;
 }
 
-EditSection.propTypes = {
+ViewSection.propTypes = {
   memo: PropTypes.object.isRequired,
 };

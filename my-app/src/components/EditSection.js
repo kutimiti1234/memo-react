@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export function ViewSection({ memo, onSubmit, onClick }) {
+export function EditSection({ memo, onsubmit, onClick }) {
   return (
     <>
       <form method="post" onSubmit={onSubmit}>
@@ -12,7 +12,7 @@ export function ViewSection({ memo, onSubmit, onClick }) {
   );
 }
 
-ViewSection.propTypes = {
+EditSection.propTypes = {
   memo: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
