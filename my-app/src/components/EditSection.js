@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export function EditSection({ memo, onsubmit, onClick }) {
+export function EditSection({ memo, onSubmit, onClick }) {
   return (
     <>
       <form method="post" onSubmit={onSubmit}>
