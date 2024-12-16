@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { MemoEdit } from "./components/MemoEdit";
 import { MemoView } from "./components/MemoView";
+import FormData from "form-data";
 
 function App() {
   const [memos, setMemos] = useState([]);
@@ -11,8 +12,29 @@ function App() {
     setMemos([...memos, { id: nextId, content: `メモ${nextId}` }]);
   }
 
+  function handleEditMemo(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // setMemos(
+    //   memos.map((memo) => {
+    //     if (memo.id === selectedId) {
+    //       return { id: selectedId, content: formData };
+    //     } else {
+    //       return memo;
+    //     }
+    //   })
+    // );
+  }
+
   function handleSelectMemo(nextSelectedId) {
     setSelectedId(nextSelectedId);
+  }
+
+  function handleDeletetMemo() {
+    setMemos(memos.filter((memo) => memo.id !== selectedId));
   }
 
   return (
@@ -26,7 +48,14 @@ function App() {
         />
       </div>
       <div className="memo-edit">
-        <MemoEdit />
+        <MemoEdit
+          memos={memos}
+          onMemoAdd={handleAddMemo}
+          selectedId={selectedId}
+          onSelectMemo={handleSelectMemo}
+          onDeleteMemo={handleDeletetMemo}
+          onEditMemo={handleEditMemo}
+        />
       </div>
     </div>
   );
