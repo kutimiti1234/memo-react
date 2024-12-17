@@ -1,11 +1,17 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MemoEdit } from "./components/MemoEdit";
 import { MemoView } from "./components/MemoView";
 
 function App() {
-  const [memos, setMemos] = useState([]);
+  const initialMemos = JSON.parse(localStorage.getItem("memos")) ?? [];
+
+  const [memos, setMemos] = useState(initialMemos);
   const [selectedId, setSelectedId] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("memos", JSON.stringify(memos));
+  }, [memos]);
 
   function handleAddMemo() {
     const nextId = memos.length !== 0 ? memos.at(-1).id + 1 : 1;
