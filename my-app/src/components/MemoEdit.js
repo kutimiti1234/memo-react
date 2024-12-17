@@ -10,6 +10,8 @@ export function MemoEdit({
   onDeleteMemo,
   onEditMemo,
 }) {
+  const selectedMemo = memos.find((memo) => memo.id === selectedId);
+
   return (
     <>
       <label>編集</label>
@@ -20,9 +22,9 @@ export function MemoEdit({
           onSelectMemo={onSelectMemo}
         />
       </div>
-      <div className={"memo-edit-section"}>
+      <div className={"memo-edit-section"} key={selectedId}>
         <EditSection
-          memo={memos.find((memo) => memo.id === selectedId)}
+          memo={selectedMemo}
           onEditMemo={onEditMemo}
           onDeleteMemo={onDeleteMemo}
         />

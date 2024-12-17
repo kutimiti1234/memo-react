@@ -1,14 +1,21 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
+  const [editMemo, setEditMemo] = useState(memo);
+
   return (
     <>
-      <form method="post" onSubmit={onEditMemo}>
-        {memo !== undefined ? (
-          <textarea key={memo.id} defaultValue={memo.content} />
-        ) : null}
-        <button type="submit">編集</button>
-      </form>
+      {editMemo !== undefined ? (
+        <textarea
+          value={editMemo.content}
+          onChange={(e) =>
+            setEditMemo({ ...editMemo, content: e.target.value })
+          }
+        />
+      ) : null}
+
+      <button onClick={() => onEditMemo(editMemo)}>編集</button>
       <button onClick={onDeleteMemo}>削除</button>
     </>
   );
