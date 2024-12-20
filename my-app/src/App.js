@@ -36,6 +36,7 @@ function App() {
 
   function handleDeletetMemo() {
     setMemos(memos.filter((memo) => memo.id !== selectedId));
+    setSelectedId(null);
   }
 
   return (
