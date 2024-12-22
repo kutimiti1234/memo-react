@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 export function MemoList({ memos, onAddMemo, onSelectMemo }) {
   const memoItems = memos.map((memo) => (
     <li key={memo.id} onClick={() => onSelectMemo(memo.id)}>
-      {memo.content.split("\n")[0]}
+      {memo.content.split('\n')[0]}
     </li>
   ));
   return (

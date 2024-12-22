@@ -1,16 +1,16 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { MemoEdit } from "./components/MemoEdit";
-import { MemoView } from "./components/MemoView";
+import './App.css';
+import { useEffect, useState } from 'react';
+import { MemoEdit } from './components/MemoEdit';
+import { MemoView } from './components/MemoView';
 
 function App() {
-  const initialMemos = JSON.parse(localStorage.getItem("memos")) ?? [];
+  const initialMemos = JSON.parse(localStorage.getItem('memos')) ?? [];
 
   const [memos, setMemos] = useState(initialMemos);
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("memos", JSON.stringify(memos));
+    localStorage.setItem('memos', JSON.stringify(memos));
   }, [memos]);
 
   function handleAddMemo() {
@@ -26,7 +26,7 @@ function App() {
         } else {
           return memo;
         }
-      })
+      }),
     );
   }
 

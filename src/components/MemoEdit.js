@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { EditSection } from "./EditSection";
-import { MemoList } from "./MemoList";
+import PropTypes from 'prop-types';
+import { EditSection } from './EditSection';
+import { MemoList } from './MemoList';
 
 export function MemoEdit({
   memos,
@@ -14,14 +14,14 @@ export function MemoEdit({
 
   return (
     <>
-      <div className={"memo-list"}>
+      <div className={'memo-list'}>
         <MemoList
           memos={memos}
           onAddMemo={onAddMemo}
           onSelectMemo={onSelectMemo}
         />
       </div>
-      <div className={"memo-content"} key={selectedId}>
+      <div className={'memo-content'} key={selectedId}>
         <EditSection
           memo={selectedMemo}
           onEditMemo={onEditMemo}

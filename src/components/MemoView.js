@@ -1,20 +1,20 @@
-import PropTypes from "prop-types";
-import { MemoList } from "./MemoList";
-import { ViewSection } from "./ViewSection";
+import PropTypes from 'prop-types';
+import { MemoList } from './MemoList';
+import { ViewSection } from './ViewSection';
 
 export function MemoView({ memos, onAddMemo, selectedId, onSelectMemo }) {
   const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
   return (
     <>
-      <div className={"memo-list"}>
+      <div className={'memo-list'}>
         <MemoList
           memos={memos}
           onAddMemo={onAddMemo}
           onSelectMemo={onSelectMemo}
         />
       </div>
-      <div className={"memo-content"} key={selectedId}>
+      <div className={'memo-content'} key={selectedId}>
         <ViewSection memo={selectedMemo} />
       </div>
     </>

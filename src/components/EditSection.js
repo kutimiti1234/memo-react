@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
   const [editMemo, setEditMemo] = useState(memo);
