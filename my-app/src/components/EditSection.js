@@ -13,7 +13,9 @@ export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
             setEditMemo({ ...editMemo, content: e.target.value })
           }
         />
-      ) : null}
+      ) : (
+        <textarea disabled></textarea>
+      )}
 
       <button onClick={() => onEditMemo(editMemo)}>編集</button>
       <button onClick={onDeleteMemo}>削除</button>

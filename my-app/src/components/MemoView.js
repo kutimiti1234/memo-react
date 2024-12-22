@@ -2,19 +2,20 @@ import PropTypes from "prop-types";
 import { MemoList } from "./MemoList";
 import { ViewSection } from "./ViewSection";
 
-export function MemoView({ memos, onMemoAdd, selectedId, onSelectMemo }) {
+export function MemoView({ memos, onAddMemo, selectedId, onSelectMemo }) {
+  const selectedMemo = memos.find((memo) => memo.id === selectedId);
+
   return (
     <>
-      <label>一覧</label>
       <div className={"memo-list"}>
         <MemoList
           memos={memos}
-          onMemoAdd={onMemoAdd}
+          onAddMemo={onAddMemo}
           onSelectMemo={onSelectMemo}
         />
       </div>
-      <div className={"memo-view-section"}>
-        <ViewSection memo={memos.find((memo) => memo.id === selectedId)} />
+      <div className={"memo-content"} key={selectedId}>
+        <ViewSection memo={selectedMemo} />
       </div>
     </>
   );
@@ -22,7 +23,7 @@ export function MemoView({ memos, onMemoAdd, selectedId, onSelectMemo }) {
 
 MemoView.propTypes = {
   memos: PropTypes.array.isRequired,
-  onMemoAdd: PropTypes.func.isRequired,
+  onAddMemo: PropTypes.func.isRequired,
   selectedId: PropTypes.number,
   onSelectMemo: PropTypes.func.isRequired,
 };

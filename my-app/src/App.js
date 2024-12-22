@@ -40,19 +40,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="memo-view">
+    <div className="memo-app">
+      <div className="memo-panel">
+        <label>一覧</label>
         <MemoView
           memos={memos}
-          onMemoAdd={handleAddMemo}
+          onAddMemo={handleAddMemo}
           selectedId={selectedId}
           onSelectMemo={handleSelectMemo}
         />
       </div>
-      <div className="memo-edit">
+      <div className="memo-panel">
+        <label>編集</label>
         <MemoEdit
           memos={memos}
-          onMemoAdd={handleAddMemo}
+          onAddMemo={handleAddMemo}
           selectedId={selectedId}
           onSelectMemo={handleSelectMemo}
           onDeleteMemo={handleDeletetMemo}

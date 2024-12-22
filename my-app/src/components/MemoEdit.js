@@ -4,7 +4,7 @@ import { MemoList } from "./MemoList";
 
 export function MemoEdit({
   memos,
-  onMemoAdd,
+  onAddMemo,
   selectedId,
   onSelectMemo,
   onDeleteMemo,
@@ -14,15 +14,14 @@ export function MemoEdit({
 
   return (
     <>
-      <label>編集</label>
       <div className={"memo-list"}>
         <MemoList
           memos={memos}
-          onMemoAdd={onMemoAdd}
+          onAddMemo={onAddMemo}
           onSelectMemo={onSelectMemo}
         />
       </div>
-      <div className={"memo-edit-section"} key={selectedId}>
+      <div className={"memo-content"} key={selectedId}>
         <EditSection
           memo={selectedMemo}
           onEditMemo={onEditMemo}
@@ -35,7 +34,7 @@ export function MemoEdit({
 
 MemoEdit.propTypes = {
   memos: PropTypes.array.isRequired,
-  onMemoAdd: PropTypes.func.isRequired,
+  onAddMemo: PropTypes.func.isRequired,
   selectedId: PropTypes.number,
   onSelectMemo: PropTypes.func.isRequired,
   onEditMemo: PropTypes.func.isRequired,

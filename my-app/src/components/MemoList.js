@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export function MemoList({ memos, onMemoAdd, onSelectMemo }) {
+export function MemoList({ memos, onAddMemo, onSelectMemo }) {
   const memoItems = memos.map((memo) => (
     <li key={memo.id} onClick={() => onSelectMemo(memo.id)}>
       {memo.content.split("\n")[0]}
@@ -9,7 +9,9 @@ export function MemoList({ memos, onMemoAdd, onSelectMemo }) {
   return (
     <>
       <ul>{memoItems}</ul>
-      <button onClick={onMemoAdd}>+</button>
+      <p className="add-memo" onClick={onAddMemo}>
+        +
+      </p>
     </>
   );
 }
@@ -17,5 +19,5 @@ export function MemoList({ memos, onMemoAdd, onSelectMemo }) {
 MemoList.propTypes = {
   memos: PropTypes.array.isRequired,
   onSelectMemo: PropTypes.func.isRequired,
-  onMemoAdd: PropTypes.func.isRequired,
+  onAddMemo: PropTypes.func.isRequired,
 };
