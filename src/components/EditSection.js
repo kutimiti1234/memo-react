@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
-import { useContext, useState } from 'react';
-import { LogInContext } from '../context/LogInContext';
+import { useState } from 'react';
+import { useLogIn } from '../hooks/useLogIn';
 
 export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
   const [editMemo, setEditMemo] = useState(memo);
-  const logInContext = useContext(LogInContext);
+  const { isLoggedIn } = useLogIn();
 
   return (
     <>
       {editMemo !== undefined ? (
         <textarea
-          disabled={!logInContext.isLoggedIn}
+          disabled={!isLoggedIn}
           value={editMemo.content}
           onChange={(e) =>
             setEditMemo({ ...editMemo, content: e.target.value })
@@ -20,13 +20,10 @@ export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
         <textarea disabled></textarea>
       )}
 
-      <button
-        disabled={!logInContext.isLoggedIn}
-        onClick={() => onEditMemo(editMemo)}
-      >
+      <button disabled={!isLoggedIn} onClick={() => onEditMemo(editMemo)}>
         編集
       </button>
-      <button disabled={!logInContext.isLoggedIn} onClick={onDeleteMemo}>
+      <button disabled={!isLoggedIn} onClick={onDeleteMemo}>
         削除
       </button>
     </>

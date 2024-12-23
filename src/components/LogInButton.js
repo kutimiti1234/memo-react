@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { LogInContext } from '../context/LogInContext';
+import { useLogIn } from '../hooks/useLogIn';
 
 export function LogInButton() {
-  const logInContext = useContext(LogInContext);
+  const { isLoggedIn, onLogIn } = useLogIn();
 
   return (
-    <button onClick={() => logInContext.onLogIn()}>
-      {logInContext.isLoggedIn === true ? 'ログアウト' : 'ログイン'}
+    <button onClick={() => onLogIn()}>
+      {isLoggedIn === true ? 'ログアウト' : 'ログイン'}
     </button>
   );
 }
