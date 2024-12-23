@@ -2,14 +2,13 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { MemoEdit } from './components/MemoEdit';
 import { MemoView } from './components/MemoView';
-import { LogInContext } from './context/LogInContext';
+import { LogInProvider } from './hooks/useLogIn';
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem('memos')) ?? [];
 
   const [memos, setMemos] = useState(initialMemos);
   const [selectedId, setSelectedId] = useState(null);
-  const [isLoggedIn, setIsloggedIn] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('memos', JSON.stringify(memos));
@@ -32,10 +31,6 @@ function App() {
     );
   }
 
-  function onLogIn() {
-    setIsloggedIn(!isLoggedIn);
-  }
-
   function handleSelectMemo(nextSelectedId) {
     setSelectedId(nextSelectedId);
   }
@@ -49,18 +44,18 @@ function App() {
     <div className="memo-app">
       <div className="memo-panel">
         <label>一覧</label>
-        <LogInContext.Provider value={{ isLoggedIn, onLogIn }}>
+        <LogInProvider>
           <MemoView
             memos={memos}
             onAddMemo={handleAddMemo}
             selectedId={selectedId}
             onSelectMemo={handleSelectMemo}
           />
-        </LogInContext.Provider>
+        </LogInProvider>
       </div>
       <div className="memo-panel">
         <label>編集</label>
-        <LogInContext.Provider value={{ isLoggedIn, onLogIn }}>
+        <LogInProvider>
           <MemoEdit
             memos={memos}
             onAddMemo={handleAddMemo}
@@ -69,7 +64,7 @@ function App() {
             onDeleteMemo={handleDeletetMemo}
             onEditMemo={handleEditMemo}
           />
-        </LogInContext.Provider>
+        </LogInProvider>
       </div>
     </div>
   );

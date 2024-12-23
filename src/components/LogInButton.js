@@ -5,7 +5,7 @@ export function LogInButton() {
 
   return (
     <button onClick={() => onLogIn()}>
-      {isLoggedIn === true ? 'ログアウト' : 'ログイン'}
+      {isLoggedIn ? 'ログアウト' : 'ログイン'}
     </button>
   );
 }
