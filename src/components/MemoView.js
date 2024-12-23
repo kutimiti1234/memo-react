@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { MemoList } from './MemoList';
 import { ViewSection } from './ViewSection';
+import { LogInButton } from './LogInButton';
 
 export function MemoView({ memos, onAddMemo, selectedId, onSelectMemo }) {
   const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
   return (
     <>
+      <LogInButton />
       <div className={'memo-list'}>
         <MemoList
           memos={memos}

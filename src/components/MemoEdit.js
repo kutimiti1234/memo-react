@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { EditSection } from './EditSection';
 import { MemoList } from './MemoList';
+import { LogInButton } from './LogInButton';
 
 export function MemoEdit({
   memos,
@@ -14,6 +15,7 @@ export function MemoEdit({
 
   return (
     <>
+      <LogInButton />
       <div className={'memo-list'}>
         <MemoList
           memos={memos}
