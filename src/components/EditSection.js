@@ -10,20 +10,36 @@ export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
     <>
       {editMemo !== undefined ? (
         <textarea
-          disabled={!isLoggedIn}
+          disabled={isLoggedIn === false}
           value={editMemo.content}
-          onChange={(e) =>
-            setEditMemo({ ...editMemo, content: e.target.value })
-          }
+          onChange={(e) => {
+            if (isLoggedIn) {
+              setEditMemo({ ...editMemo, content: e.target.value });
+            }
+          }}
         />
       ) : (
         <textarea disabled></textarea>
       )}
 
-      <button disabled={!isLoggedIn} onClick={() => onEditMemo(editMemo)}>
+      <button
+        disabled={!isLoggedIn}
+        onClick={() => {
+          if (isLoggedIn) {
+            onEditMemo(editMemo);
+          }
+        }}
+      >
         編集
       </button>
-      <button disabled={!isLoggedIn} onClick={onDeleteMemo}>
+      <button
+        disabled={!isLoggedIn}
+        onClick={() => {
+          if (isLoggedIn) {
+            onDeleteMemo();
+          }
+        }}
+      >
         削除
       </button>
     </>
