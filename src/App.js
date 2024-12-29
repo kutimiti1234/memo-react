@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { MemoEdit } from './components/MemoEdit';
-import { MemoView } from './components/MemoView';
+import { MemoPanel } from './components/MemoPanel';
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem('memos')) ?? [];
@@ -42,17 +41,8 @@ function App() {
   return (
     <div className="memo-app">
       <div className="memo-panel">
-        <label>一覧</label>
-        <MemoView
-          memos={memos}
-          onAddMemo={handleAddMemo}
-          selectedId={selectedId}
-          onSelectMemo={handleSelectMemo}
-        />
-      </div>
-      <div className="memo-panel">
         <label>編集</label>
-        <MemoEdit
+        <MemoPanel
           memos={memos}
           onAddMemo={handleAddMemo}
           selectedId={selectedId}

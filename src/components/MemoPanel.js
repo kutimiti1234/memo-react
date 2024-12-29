@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { EditSection } from './EditSection';
-import { MemoList } from './MemoList';
+import { MemoEdit } from './EditSection';
+import { MemoList } from './MemoView';
 
-export function MemoEdit({
+export function MemoPanel({
   memos,
   onAddMemo,
   selectedId,
@@ -22,7 +22,7 @@ export function MemoEdit({
         />
       </div>
       <div className={'memo-content'} key={selectedId}>
-        <EditSection
+        <MemoEdit
           memo={selectedMemo}
           onEditMemo={onEditMemo}
           onDeleteMemo={onDeleteMemo}
@@ -32,7 +32,7 @@ export function MemoEdit({
   );
 }
 
-MemoEdit.propTypes = {
+MemoPanel.propTypes = {
   memos: PropTypes.array.isRequired,
   onAddMemo: PropTypes.func.isRequired,
   selectedId: PropTypes.number,

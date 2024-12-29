@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
+export function MemoEdit({ memo, onEditMemo, onDeleteMemo }) {
   const [editMemo, setEditMemo] = useState(memo);
 
   return (
@@ -23,7 +23,7 @@ export function EditSection({ memo, onEditMemo, onDeleteMemo }) {
   );
 }
 
-EditSection.propTypes = {
+MemoEdit.propTypes = {
   memo: PropTypes.object,
   onEditMemo: PropTypes.func.isRequired,
   onDeleteMemo: PropTypes.func.isRequired,

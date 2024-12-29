@@ -1,29 +1,23 @@
 import PropTypes from 'prop-types';
-import { MemoList } from './MemoList';
-import { ViewSection } from './ViewSection';
 
-export function MemoView({ memos, onAddMemo, selectedId, onSelectMemo }) {
-  const selectedMemo = memos.find((memo) => memo.id === selectedId);
-
+export function MemoList({ memos, onAddMemo, onSelectMemo }) {
+  const memoItems = memos.map((memo) => (
+    <li key={memo.id} onClick={() => onSelectMemo(memo.id)}>
+      {memo.content.split('\n')[0]}
+    </li>
+  ));
   return (
     <>
-      <div className={'memo-list'}>
-        <MemoList
-          memos={memos}
-          onAddMemo={onAddMemo}
-          onSelectMemo={onSelectMemo}
-        />
-      </div>
-      <div className={'memo-content'} key={selectedId}>
-        <ViewSection memo={selectedMemo} />
-      </div>
+      <ul>{memoItems}</ul>
+      <p className="add-memo" onClick={onAddMemo}>
+        +
+      </p>
     </>
   );
 }
 
-MemoView.propTypes = {
+MemoList.propTypes = {
   memos: PropTypes.array.isRequired,
-  onAddMemo: PropTypes.func.isRequired,
-  selectedId: PropTypes.number,
   onSelectMemo: PropTypes.func.isRequired,
+  onAddMemo: PropTypes.func.isRequired,
 };
