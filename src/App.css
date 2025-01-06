@@ -51,6 +51,7 @@
   margin-bottom: 5px;
   text-decoration: underline;
   color: #0004ff;
+  overflow: hidden;
 }
 
 .memo-list li:hover {
