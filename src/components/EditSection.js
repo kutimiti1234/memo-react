@@ -17,7 +17,7 @@ export function MemoEdit({ memo, onEditMemo, onDeleteMemo }) {
         <textarea disabled></textarea>
       )}
 
-      <button onClick={() => onEditMemo(editMemo)}>編集</button>
+      <button onClick={() => onEditMemo(editMemo)}>更新</button>
       <button onClick={onDeleteMemo}>削除</button>
     </>
   );
