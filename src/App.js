@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { MemoPanel } from './components/MemoPanel';
+import { LogInProvider } from './hooks/useLogIn';
 
 function App() {
   const initialMemos = JSON.parse(localStorage.getItem('memos')) ?? [];
@@ -41,14 +42,16 @@ function App() {
   return (
     <div className="memo-view">
       <label>編集</label>
-      <MemoPanel
-        memos={memos}
-        onAddMemo={handleAddMemo}
-        selectedId={selectedId}
-        onSelectMemo={handleSelectMemo}
-        onDeleteMemo={handleDeletetMemo}
-        onEditMemo={handleEditMemo}
-      />
+      <LogInProvider>
+        <MemoPanel
+          memos={memos}
+          onAddMemo={handleAddMemo}
+          selectedId={selectedId}
+          onSelectMemo={handleSelectMemo}
+          onDeleteMemo={handleDeletetMemo}
+          onEditMemo={handleEditMemo}
+        />
+      </LogInProvider>
     </div>
   );
 }
